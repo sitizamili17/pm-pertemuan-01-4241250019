@@ -11,7 +11,17 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Aplikasi Pertamaku',
-      theme: ThemeData(colorSchemeSeed: Colors.blue),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        useMaterial3: true,
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
+        scaffoldBackgroundColor: const Color(0xFFF1F6FD),
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.blue.shade700,
+          foregroundColor: Colors.white,
+          centerTitle: true,
+        ),
+      ),
       home: const HalamanUtama(),
     );
   }
@@ -40,24 +50,66 @@ class _HalamanUtamaState extends State<HalamanUtama> {
         title: const Text('Halo Flutter!'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              'Halo, namaku [Siti Cantik]',
-              style: TextStyle(fontSize: 22),
-            ),
-            const SizedBox(height: 20),
-            Text(
-              'Kamu menekan tombol $_hitungan kali',
-              style: const TextStyle(fontSize: 16),
-            ),
-          ],
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 48,
+                backgroundColor: Colors.blue.shade700,
+                child: const Icon(Icons.person, size: 56, color: Colors.white),
+              ),
+              const SizedBox(height: 16),
+              const Text(
+                'Halo, namaku Siti Haliza Zamili',
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+              ),
+              const SizedBox(height: 16),
+              Card(
+                elevation: 2,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
+                child: const Column(
+                  children: [
+                    ListTile(
+                      leading: Icon(Icons.badge, color: Colors.blue),
+                      title: Text('NIM'),
+                      subtitle: Text('4241250019'),
+                    ),
+                    Divider(height: 1),
+                    ListTile(
+                      leading: Icon(Icons.school, color: Colors.blue),
+                      title: Text('Kelas'),
+                      subtitle: Text('PSIK 24D'),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(height: 24),
+              Text(
+                'Kamu menekan tombol $_hitungan kali',
+                style: const TextStyle(fontSize: 16),
+              ),
+              const SizedBox(height: 12),
+              ElevatedButton.icon(
+                onPressed: _tambah,
+                icon: const Icon(Icons.add),
+                label: const Text('Tambah'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue.shade700,
+                  foregroundColor: Colors.white,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 24,
+                    vertical: 12,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _tambah,
-        child: const Icon(Icons.add),
       ),
     );
   }
