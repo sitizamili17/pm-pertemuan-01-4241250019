@@ -47,7 +47,7 @@ class _HalamanUtamaState extends State<HalamanUtama> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Halo Flutter!'),
+        title: const Text('Hello World!'),
       ),
       body: Center(
         child: SingleChildScrollView(
